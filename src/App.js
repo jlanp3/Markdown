@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import Editor from "./Components/Editor";
+import Preview from "./Components/Preview";
 
 function App() {
+  const [value, setValue] = useState("");
+  const [data, setData] = useState([]);
+
+  const handleChange = (e) => {
+    let res = e.target.value;
+    setValue(res);
+    setData(res.match(/.*[^\n]/g));
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>markdown</h1>
+      <Editor handleChange={handleChange} value={value} />
+      <Preview text={value} arr={data} />
     </div>
   );
 }
