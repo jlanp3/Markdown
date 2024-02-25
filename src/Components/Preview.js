@@ -1,12 +1,5 @@
-const Preview = ({ text, arr }) => {
-  return (
-    <div className="preview">
-      {arr &&
-        arr.map((data) => {
-          return data;
-        })}
-    </div>
-  );
+const Preview = () => {
+  return <div className="preview" id="preview"></div>;
 };
 
 export default Preview;
